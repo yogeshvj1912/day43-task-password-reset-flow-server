@@ -13,10 +13,8 @@ ENV.config();
 //     res.status(201).json("server created")
 // })
 
-
+app.use(express.json());
 app.use(cookiParser());
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true });
 app.use(cors({
     origin: "https://profound-sunburst-e217cc.netlify.app"
    
