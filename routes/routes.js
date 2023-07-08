@@ -18,6 +18,10 @@ const transporter = nodemailer.createTransport({
     }
 })
 
+router.get("/",(req,res)=>{
+    res.json("hello world")
+})
+
 //for user registration
 
 router.post("/register", async (req, res) => {
