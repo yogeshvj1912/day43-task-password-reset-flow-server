@@ -14,7 +14,11 @@ ENV.config();
 
 app.use(express.json());
 app.use(cookiParser());
-app.use(cors());
+
+app.use(cors({
+    origin: "https://profound-sunburst-e217cc.netlify.app"
+   
+}))
 app.use(router);
 
 
