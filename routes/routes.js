@@ -154,10 +154,10 @@ router.post("/sendpasswordlink",async(req,res)=>{
 
             transporter.sendMail(mailOptions,(error,info)=>{
                 if(error){
-                    // console.log("error",error);
+                    console.log("error",error);
                     res.status(401).json({status:401,message:"email not send"})
                 }else{
-                    // console.log("Email sent",info.response);
+                    console.log("Email sent",info.response);
                     res.status(201).json({status:201,message:"Email sent Succsfully"})
                 }
             })
