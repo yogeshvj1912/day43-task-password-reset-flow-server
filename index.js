@@ -1,7 +1,6 @@
 const express= require("express")
 const app= express();
 const router = require("./routes/routes")
-
 const cors = require("cors");
 const cookiParser = require("cookie-parser")
 const ENV = require("dotenv")
@@ -15,10 +14,7 @@ ENV.config();
 
 app.use(express.json());
 app.use(cookiParser());
-app.use(cors({
-    origin: "https://profound-sunburst-e217cc.netlify.app"
-   
-}))
+app.use(cors());
 app.use(router);
 
 

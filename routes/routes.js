@@ -20,6 +20,10 @@ const transporter = nodemailer.createTransport({
 
 //for user registration
 
+router.get("/",(req,res)=>{
+res.json("created successfully")
+})
+
 router.post("/register", async (req, res) => {
     const { fname, email, password, cpassword } = req.body;
     if (!fname || !email || !password || !cpassword) {
@@ -145,7 +149,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
                 from:process.env.USER_EMAIL,
                 to:email,
                 subject:"Sending Email For password Reset",
-                text:`This Link Valid For 2 MINUTES http://localhost:3000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This Link Valid For 2 MINUTES http://magnificent-sopapillas-535129.netlify.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions,(error,info)=>{
