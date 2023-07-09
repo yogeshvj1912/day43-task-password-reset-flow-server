@@ -18,10 +18,6 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-router.get("/",(req,res)=>{
-    res.json("hello world")
-})
-
 //for user registration
 
 router.post("/register", async (req, res) => {
@@ -125,7 +121,7 @@ router.get("/logout", authenticate, async (req, res) => {
 
 // send email Link For reset Password
 router.post("/sendpasswordlink",async(req,res)=>{
-    console.log(req.body)
+
 
     const {email} = req.body;
 
@@ -149,15 +145,15 @@ router.post("/sendpasswordlink",async(req,res)=>{
                 from:process.env.USER_EMAIL,
                 to:email,
                 subject:"Sending Email For password Reset",
-                text:`This Link Valid For 2 MINUTES https://profound-sunburst-e217cc.netlify.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This Link Valid For 2 MINUTES http://localhost:3000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions,(error,info)=>{
                 if(error){
-                    console.log("error",error);
+                    // console.log("error",error);
                     res.status(401).json({status:401,message:"email not send"})
                 }else{
-                    console.log("Email sent",info.response);
+                    // console.log("Email sent",info.response);
                     res.status(201).json({status:201,message:"Email sent Succsfully"})
                 }
             })
